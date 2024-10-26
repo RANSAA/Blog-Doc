@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* 调整 VitePress 侧边栏的位置和间距 */
+.vp-doc .vp-sidebar {
+  margin-left: 0 !important; /* 取消默认的外边距 */
+  padding-left: 5px; /* 添加轻微内边距（可根据需求调整） */
+  width: 140px; /* 侧边栏宽度，可自定义 */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 可选：添加阴影 */
+  background-color: red; /* 用于调试，确保样式生效 */
+}
+
+.vp-doc {
+  max-width: none; /* 避免内容限制固定宽度 */
+  padding-left: 140px; /* 确保内容与侧边栏不重叠 */
+}
+
+
+
+.VPDoc .container {
+  margin: 0px;
+}
