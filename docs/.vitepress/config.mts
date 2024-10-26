@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "芮淼一线",
   titleTemplate: 'Blog',
-  //base: '/Blog-Doc/',
+  base: '/Blog-Doc/',
   cleanUrls: true,
   description: "个人文档博客",
 
