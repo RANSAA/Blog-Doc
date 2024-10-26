@@ -15,7 +15,5 @@ VPNParser/.build
 ClashX-ignore-list/.build
 iptv/_解析代码/build/
 ./vpn/subconverter/cache
-./docs/.vitepress/cache
-./docs/.vitepress/cache/
-./docs/.vitepress/dist
-./docs/.vitepress/dist/
+/docs/.vitepress/cache
+/docs/.vitepress/dist
