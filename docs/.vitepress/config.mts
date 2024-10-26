@@ -67,7 +67,7 @@ export default defineConfig({
       {
         text: 'iOS',
         items: [
-          { text: 'CocoaPods', link: '/src/iOS/_introduction-CocoaPods' },
+          { text: 'CocoaPods', link: './src/iOS/_introduction-CocoaPods' },
           {
             items: [
               { text: 'Objective-C', link: '/src/iOS/_introduction-Objective-C' },
