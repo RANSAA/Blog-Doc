@@ -4,10 +4,14 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "芮淼一线",
   titleTemplate: 'Blog',
-  base: '/Blog-Doc/',
   cleanUrls: true,
   description: "个人文档博客",
 
+  base: '/Blog-Doc/',
+  //sitemap: {
+  //  hostname: 'https://ransaa.github.io/Blog-Doc/'
+  //},
+  
   themeConfig: {
     logo: '/img/favicon.png',
     head: [
@@ -67,7 +71,7 @@ export default defineConfig({
       {
         text: 'iOS',
         items: [
-          { text: 'CocoaPods', link: './src/iOS/_introduction-CocoaPods' },
+          { text: 'CocoaPods', link: '/src/iOS/_introduction-CocoaPods' },
           {
             items: [
               { text: 'Objective-C', link: '/src/iOS/_introduction-Objective-C' },
