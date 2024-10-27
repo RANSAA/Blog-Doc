@@ -8,11 +8,11 @@ Anlinux-Resources: https://github.com/EXALAB/Anlinux-Resources \
 原始站点: https://github.com/EXALAB/Anlinux-Resources \
 当前站点: https://anlinux.netlify.app \
 同步状态: 目前只做了**桌面***和**SSH**的脚本资源同步，包含目录：
-1. Scripts/DesktopEnvironment
+1. Scripts/DesktopEnvironment 
 2. Scripts/SSH
 
 ## 资源下载
-[AnLinux-App v6.50](https://anlinux.netlify.app/AppRes/AnLinux-App-v6.50.apk)
+[AnLinux-App v6.50](https://anlinux.netlify.app/AppRes/AnLinux-App-v6.50.apk) \
 [Termux v0.118.0](https://anlinux.netlify.app/AppRes/termux-app_v0.118.0+github-debug_arm64-v8a.apk)
 
 ## 桌面安装
