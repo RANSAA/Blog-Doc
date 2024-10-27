@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "芮淼一线",
-  titleTemplate: 'Blog',
+  titleTemplate: '芮淼一线的个人文档',
   cleanUrls: true,
   description: "个人文档博客",
 
