@@ -8,10 +8,13 @@ export default defineConfig({
   description: "个人文档博客",
 
   base: '/Blog-Doc/',
-  //sitemap: {
-  //  hostname: 'https://ransaa.github.io/Blog-Doc/'
-  //},
-  
+  vite: {
+    define: {
+      'process.env.VITE_BASE_URL': JSON.stringify('/Blog-Doc'), //用于给形如_introduction-iOS.m格式文档中的链接添加BASE URL
+    },
+  },
+
+
   themeConfig: {
     logo: '/img/favicon.png',
     head: [
