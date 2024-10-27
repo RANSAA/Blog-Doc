@@ -17,7 +17,7 @@ export default defineConfig({
 
 
   themeConfig: {
-    logo: '/img/favicon.png',
+    logo: '/img/logo.png',
     head: [
       ['link', { rel: 'icon', type: 'image/png', href: '/img/favicon.png' }],
       ['link', { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }],

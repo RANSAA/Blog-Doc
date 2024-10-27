@@ -17,10 +17,10 @@ export default defineConfig({
 
 
   themeConfig: {
-    logo: '/img/favicon.png',
+    logo: '/img/logo.png',
     head: [
-      ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }],
-      ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      ['link', { rel: 'icon', type: 'image/png', href: '/img/favicon.png' }],
+      ['link', { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }],
       ['link', { rel: 'stylesheet', href: '/css/sidebar-left.css' }],
     ],
     socialLinks: [
