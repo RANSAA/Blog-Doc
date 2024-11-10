@@ -31,6 +31,17 @@
 |    chatgpt-next-start |   2051  |  pandoraNext(目前不支持macOS)  |
 |     |     |    |
 |     |     |    |
+|     |     |    |
+|     |     |    |
+|     |     |    |
+|   XDown |  2080   |  WebUI访问端口  |
+|     |     |    |
+|   qBittorrent  |   2081  |  WebUI访问端口  |
+|     |     |    |
+|     |     |    |
+|     |     |    |
+|     |     |    |
+|     |     |    |
 |     |     | IPTV服务   |
 |   epg  |  2060   |  老张的EPG  |
 |     |     |    |
