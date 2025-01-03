@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 2rem;
+}
+
+/* 强制移除所有链接的下划线和颜色 */
+.grid-item:link,
+.grid-item:visited,
+.grid-item:hover,
+.grid-item:active {
+  text-decoration: none !important;  /* 去除下划线 */
+  color: inherit !important; /* 使用父元素的颜色，避免蓝色 */
+}
+
+.grid-item {
+  display: block;
+  padding: 1.2rem;
+  color: #888888; /** 字体颜色 **/
+  font-size: 1.0rem;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0; /* 边框颜色 */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+
+
+/**
+ * 默认主题 CSS 变量来获取可以被覆盖的变量：https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ **/
+:root {
+/* 自定义主页 name 的颜色  */
+  --vp-home-hero-name-color: red;
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
+
+
+  
+  --vp-layout-max-width: 1640px;
+
+
+  --vp-nav-height: 64px;
+
+
+
+  /*--vp-sidebar-bg-color:red;
+  --vp-sidebar-width: 272px;*/
+
+
+
+/*  --vp-c-brand-1: #646cff;
+  --vp-c-brand-2: #747bff;*/
+
+  
+}
+
+
+

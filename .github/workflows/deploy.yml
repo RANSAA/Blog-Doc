@@ -1,0 +1,53 @@
+name: Deploy VitePress Site
+
+on:
+  push:
+    branches:
+      - main  # 当推送到 main 分支时触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出代码仓库
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 设置 Node.js 版本
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+
+      # 安装依赖并构建项目到Netlify
+      - name: Install and Build To Netlify
+        run: |
+          npm ci  # 使用 npm ci 确保版本一致
+          npm run build:netlify
+
+
+      ## 部署到netlify
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=./docs/.vitepress/dist --prod
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+
+      # 安装依赖并构建项目到Github
+      - name: Install and Build To Github
+        run: |
+          npm ci  # 使用 npm ci 确保版本一致
+          npm run build:github
+
+      # 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/.vitepress/dist  # VitePress 构建输出目录
+          force_orphan: true  # 使用空分支防止冲突
