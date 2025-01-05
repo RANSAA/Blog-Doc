@@ -23,10 +23,6 @@ export default defineConfig({
   ],
   themeConfig: {
     logo: '/img/logo.png',
-    // head: [
-    //   ['link', { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }],
-    //   ['link', { rel: 'stylesheet', href: '/css/sidebar-left.css' }],
-    // ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/RANSAA/Blog-Doc' }
     ],

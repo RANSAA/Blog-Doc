@@ -10,11 +10,19 @@
   background-color: red; /* 用于调试，确保样式生效 */
 }
 
+
+
+/* 最大化文档区域宽度 */
 .vp-doc {
-  max-width: none; /* 避免内容限制固定宽度 */
-  padding-left: 140px; /* 确保内容与侧边栏不重叠 */
+  max-width: 100% !important;  /* 设置最大宽度为 100% */
+  margin: 0 auto;  /* 居中对齐 */
 }
 
+/* 如果需要调整正文的最大宽度，可以使用下面的样式 */
+.vp-doc-content {
+  max-width: 100% !important;
+  padding: 0 0px;  /* 添加左右间距 */
+}
 
 
 .VPDoc .container {
