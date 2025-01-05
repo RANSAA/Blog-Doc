@@ -19,7 +19,6 @@ export default defineConfig({
   themeConfig: {
     logo: '/img/logo.png',
     head: [
-      ['link', { rel: 'icon', type: 'image/png', href: '/img/favicon.png' }],
       ['link', { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }],
       ['link', { rel: 'stylesheet', href: '/css/sidebar-left.css' }],
     ],
@@ -28,7 +27,7 @@ export default defineConfig({
     ],
     footer: {
       //message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-2024 芮淼一线'
+      copyright: 'Copyright © 2019-2025 芮淼一线'
     },
     search: {
       provider: 'local',
