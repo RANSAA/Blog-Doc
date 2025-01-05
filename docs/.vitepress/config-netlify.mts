@@ -16,8 +16,10 @@ export default defineConfig({
   },
 
   head: [
-    ['link', { rel: 'icon', type: 'image/x-icon', href: 'img/favicon.ico' }],
-    ['link', { rel: 'stylesheet', href: 'css/sidebar-left.css' }],
+    //['link', { rel: 'icon', href: '/favicon.ico' },
+    // 将 favicon.ico 放在公共目录中，如果设置了 base，则使用 /base/favicon.ico
+    ['link', { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }],
+    ['link', { rel: 'stylesheet', href: '/css/sidebar-left.css' }],
   ],
   themeConfig: {
     logo: '/img/logo.png',
