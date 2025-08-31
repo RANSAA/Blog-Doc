@@ -20,8 +20,12 @@
 |    sftpgo-ftp |   2021  |    |
 |    sftpgo-webdav |   2020  |    |
 |     |     |    |
-|    AList |   2030  |    |
-|    aliyundrive-webdav |   2031  |    |
+|    AList |   2030  |  不安全，已弃用；使用OpenList替代  |
+|   OpenList  |   2030  |  WebDav ,HTTP端口  |
+|   OpenList   |  2031  |   FTP端口  （预留）  |
+|   OpenList   |  2032   |  SFTP端口  （预留）   |
+|    aliyundrive-webdav |   2035  |  推荐使用OpenList  |
+|     |     |    |
 |     |     |    |
 |    code-server |  2040   |    |
 |    openvscode |  2041   |    |

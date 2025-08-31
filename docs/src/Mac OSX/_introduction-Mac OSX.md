@@ -12,4 +12,5 @@ const base = process.env.VITE_BASE_URL;
   <a class="grid-item" :href="`${base}/src/Mac OSX/4.shell执行sudo命令时,自动输入密码`">shell执行sudo命令时,自动输入密码</a>
   <a class="grid-item" :href="`${base}/src/Mac OSX/5.Sourcetree添加github.com ssh`">Sourcetree添加github.com ssh</a>
   <a class="grid-item" :href="`${base}/src/Mac OSX/6.使用 networksetup命令手动设置IP地址`">使用 networksetup命令手动设置IP地址</a>
+  <a class="grid-item" :href="`${base}/src/Mac OSX/7.SideStore + LiveContainer 实现自签名与安装任意应用`">SideStore + LiveContainer 实现自签名与安装任意应用</a>
 </div>
