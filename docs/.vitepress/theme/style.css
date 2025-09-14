@@ -41,24 +41,84 @@
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
 
 
-  
-  --vp-layout-max-width: 1640px;
+/* 设置中间显示内容区域最大宽度 */
+/*  --vp-layout-max-width: 1640px;*/
+  --vp-layout-max-width: 100%;
 
 
+/*导航条高度*/
   --vp-nav-height: 64px;
 
 
-
-  /*--vp-sidebar-bg-color:red;
+/*  --vp-sidebar-bg-color:red;
   --vp-sidebar-width: 272px;*/
-
 
 
 /*  --vp-c-brand-1: #646cff;
   --vp-c-brand-2: #747bff;*/
-
-  
+ 
 }
+
+
+
+
+/***********覆盖属性使中间的内容区域的宽度变大****************/
+
+
+
+
+/* 控制内容区最大宽度 */
+.VPDoc .content {
+  max-width: 1640px !important; /* 默认大概是 960px */
+}
+
+/* 如果想让正文部分占更多空间，可以设置 flex */
+.VPDoc .container {
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+}
+
+.VPDoc .content {
+  flex: 1;
+}
+
+
+
+/* 设置中间内容区域的宽度 */
+/*.VPDoc.has-aside .content-container[data-v-10119189]*/
+/*.VPDoc.has-aside.has-aside .content-container*/
+.VPDoc.has-aside.has-aside .content-container {
+  min-width: 640px;
+/*  max-width: 3660px;*/
+  max-width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

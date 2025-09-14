@@ -118,6 +118,8 @@ export default defineConfig({
       }
     ],
 
+
+
     // 正确的侧边栏配置
     sidebar: {
       //多侧边栏： 默认侧边栏
@@ -185,11 +187,13 @@ export default defineConfig({
         {
           text: 'Mac OSX',
           items: [
-            { text: 'Apache配置https', link: '/src/Mac OSX/Apache配置https' },
-            { text: 'git 多帐号解决方案', link: '/src/Mac OSX/git 多帐号解决方案' },
-            { text: 'Hosts文件解决github.com访问问题', link: '/src/Mac OSX/Hosts文件解决github.com访问问题' },
-            { text: 'shell执行sudo命令时,自动输入密码', link: '/src/Mac OSX/shell执行sudo命令时,自动输入密码' },
-            { text: 'Sourcetree添加github.com ssh', link: '/src/Mac OSX/Sourcetree添加github.com ssh' },
+            { text: 'Apache配置https', link: '/src/Mac OSX/1.Apache配置https' },
+            { text: 'Git 多帐号解决方案', link: '/src/Mac OSX/2.git 多帐号解决方案' },
+            { text: 'Hosts文件解决github.com访问问题', link: '/src/Mac OSX/3.Hosts文件解决github.com访问问题' },
+            { text: 'Shell执行sudo命令时,自动输入密码', link: '/src/Mac OSX/4.shell执行sudo命令时,自动输入密码' },
+            { text: 'Sourcetree添加github.com ssh', link: '/src/Mac OSX/5.Sourcetree添加github.com ssh' },
+            { text: '使用 networksetup命令手动设置IP地址', link: '/src/Mac OSX/6.使用 networksetup命令手动设置IP地址' },
+            { text: 'SideStore + LiveContainer 实现自签名与安装任意应用', link: '/src/Mac OSX/7.SideStore + LiveContainer 实现自签名与安装任意应用' },
           ]
         }
       ],
@@ -214,7 +218,7 @@ export default defineConfig({
           items: [
             { text: 'Termux+macOS自定义端口记录', link: '/src/玩机/Termux+macOS自定义端口记录' },
             { text: 'Termux+Ubuntu+SSH+SFTP+Swift+Code-Server', link: '/src/玩机/Termux+Ubuntu+SSH+SFTP+Swift+Code-Server' },
-            { text: 'open-vm-tools工具的安装与使用', link: '/src/玩机/open-vm-tools工具的安装与使用' },
+            { text: 'Open-vm-tools工具的安装与使用', link: '/src/玩机/open-vm-tools工具的安装与使用' },
             { text: 'Anlinux-Resources Netlify 资源同步', link: '/src/玩机/Anlinux-Resources Netlify 资源同步' },
           ]
         }
