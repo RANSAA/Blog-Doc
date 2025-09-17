@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "芮淼一线",
@@ -7,27 +8,29 @@ export default defineConfig({
   cleanUrls: true,
   description: "个人文档博客",
 
-  base: '/Blog-Doc/',
+  //部署到Netlify站点时，使用“/”作为基础路径
+  base: '/',
   vite: {
     define: {
-      'process.env.VITE_BASE_URL': JSON.stringify('/Blog-Doc'), //用于给形如_introduction-iOS.m格式文档中的链接添加BASE URL
+      //'process.env.VITE_BASE_URL': JSON.stringify(''), //用于给形如_introduction-iOS.m格式文档中的链接添加BASE URL，-> 部署到Netlify站点时不需要添加基础路径
+      'process.env.VITE_BASE_URL': JSON.stringify(InputViteBaseURL),
     },
   },
 
-
+  head: [
+    //['link', { rel: 'icon', href: '/favicon.ico' },
+    // 将 favicon.ico 放在公共目录中，如果设置了 base，则使用 /base/favicon.ico
+    ['link', { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }],
+    ['link', { rel: 'stylesheet', href: '/css/sidebar-left.css' }],
+  ],
   themeConfig: {
-    logo: '/img/favicon.png',
-    head: [
-      ['link', { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }],
-      ['link', { rel: 'icon', type: 'image/png', href: '/img/favicon.png' }],
-      ['link', { rel: 'stylesheet', href: '/css/sidebar-left.css' }],
-    ],
+    logo: '/img/logo.png',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/RANSAA/Blog-Doc' }
     ],
     footer: {
       //message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-2024 芮淼一线'
+      copyright: 'Copyright © 2019-2025 芮淼一线'
     },
     search: {
       provider: 'local',
@@ -53,7 +56,7 @@ export default defineConfig({
       }
     },
     lastUpdated: {
-      text: 'Updated at',
+      text: '上次更新',
       formatOptions: {
         dateStyle: 'full',
         timeStyle: 'medium'
@@ -69,12 +72,15 @@ export default defineConfig({
 
 
 
+    //顶部导航条配置
     nav: [
       //{ text: 'Home', link: '/' },
       {
         text: 'iOS',
         items: [
-          { text: 'CocoaPods', link: '/src/iOS/_introduction-CocoaPods' },
+          { 
+            text: 'CocoaPods', link: '/src/iOS/_introduction-CocoaPods' 
+          },
           {
             items: [
               { text: 'Objective-C', link: '/src/iOS/_introduction-Objective-C' },
@@ -117,7 +123,9 @@ export default defineConfig({
       }
     ],
 
-    // 正确的侧边栏配置
+
+
+    //侧边栏 - 左侧的sidebar侧边栏配置
     sidebar: {
       //多侧边栏： 默认侧边栏
       '/': [
@@ -134,6 +142,7 @@ export default defineConfig({
         {
           text: 'CocoaPods',
           collapsed: true,
+          link: '/src/iOS/_introduction-CocoaPods',
           items: [
             { text: 'Podfile常用三方库及其配置一：基础配置与说明', link: '/src/iOS/CocoaPods/Podfile常用三方库及其配置一：基础配置与说明' },
             { text: 'Podfile常用三方库及其配置二：Pod常用框架', link: '/src/iOS/CocoaPods/Podfile常用三方库及其配置二：Pod常用框架' },
@@ -144,6 +153,7 @@ export default defineConfig({
         {
           text: 'Objective-C',
           collapsed: true,
+          link: '/src/iOS/_introduction-Objective-C',
           items: [
             { text: 'iOS 动态获取TeamID(又名AppIdentifierPrefix)', link: '/src/iOS/Objective-C/iOS 动态获取TeamID(又名AppIdentifierPrefix)' },
           ]
@@ -151,6 +161,7 @@ export default defineConfig({
         {
           text: 'Swift',
           collapsed: true,
+          link: '/src/iOS/_introduction-Swift',
           items: [
             { text: 'Swift 中文GBK乱码解决方案', link: '/src/iOS/Swift/Swift 中文GBK乱码解决方案' },
             { text: 'Swift 获取变量地址,自定义description,获取对象的属性,变量', link: '/src/iOS/Swift/Swift 获取变量地址,自定义description,获取对象的属性,变量' },
@@ -161,6 +172,7 @@ export default defineConfig({
         {
           text: 'SwiftUI',
           collapsed: true,
+          link: '/src/iOS/_introduction-SwiftUI',
           items: [
             { text: 'SwiftUI：Toggle详解', link: '/src/iOS/SwiftUI/SwiftUI：Toggle详解' },
             { text: 'SwiftUI：自定义返回按钮', link: '/src/iOS/SwiftUI/SwiftUI：自定义返回按钮' },
@@ -170,31 +182,35 @@ export default defineConfig({
         {
           text: 'Mac Catalyst',
           collapsed: true,
+          link: '/src/iOS/_introduction-Mac Catalyst',
           items: [
             { text: 'MacCatalyst禁用全屏按钮(以及：关闭，最小化，全屏三个按钮相关操作)与macOS AppKit框架操作', link: '/src/iOS/Mac Catalyst/MacCatalyst禁用全屏按钮(以及：关闭，最小化，全屏三个按钮相关操作)与macOS AppKit框架操作' },
           ]
         },
       ],
 
-
-
-
       //多侧边栏：可能会根据页面路径显示不同的侧边栏
       '/src/Mac OSX/': [
         {
           text: 'Mac OSX',
+          collapsed: false,
+          link: '/src/Mac OSX/_introduction-Mac OSX',
           items: [
-            { text: 'Apache配置https', link: '/src/Mac OSX/Apache配置https' },
-            { text: 'git 多帐号解决方案', link: '/src/Mac OSX/git 多帐号解决方案' },
-            { text: 'Hosts文件解决github.com访问问题', link: '/src/Mac OSX/Hosts文件解决github.com访问问题' },
-            { text: 'shell执行sudo命令时,自动输入密码', link: '/src/Mac OSX/shell执行sudo命令时,自动输入密码' },
-            { text: 'Sourcetree添加github.com ssh', link: '/src/Mac OSX/Sourcetree添加github.com ssh' },
+            { text: 'Apache配置https', link: '/src/Mac OSX/1.Apache配置https' },
+            { text: 'Git 多帐号解决方案', link: '/src/Mac OSX/2.git 多帐号解决方案' },
+            { text: 'Hosts文件解决github.com访问问题', link: '/src/Mac OSX/3.Hosts文件解决github.com访问问题' },
+            { text: 'Shell执行sudo命令时,自动输入密码', link: '/src/Mac OSX/4.shell执行sudo命令时,自动输入密码' },
+            { text: 'Sourcetree添加github.com ssh', link: '/src/Mac OSX/5.Sourcetree添加github.com ssh' },
+            { text: '使用 networksetup命令手动设置IP地址', link: '/src/Mac OSX/6.使用 networksetup命令手动设置IP地址' },
+            { text: 'SideStore + LiveContainer 实现自签名与安装任意应用', link: '/src/Mac OSX/7.SideStore + LiveContainer 实现自签名与安装任意应用' },
           ]
         }
       ],
       '/src/Linux/': [
         {
           text: 'Linux',
+          collapsed: false,
+          link: '/src/Linux/_introduction-Linux',
           items: [
             { text: 'Linux查看版本信息', link: '/src/Linux/Linux查看版本信息' },
             { text: 'Ubuntu中文支持,及中文乱码问题', link: '/src/Linux/Ubuntu中文支持,及中文乱码问题' },
@@ -210,10 +226,12 @@ export default defineConfig({
       '/src/玩机/': [
         {
           text: '玩机',
+          collapsed: false,
+          link: '/src/玩机/_introduction-玩机',
           items: [
             { text: 'Termux+macOS自定义端口记录', link: '/src/玩机/Termux+macOS自定义端口记录' },
             { text: 'Termux+Ubuntu+SSH+SFTP+Swift+Code-Server', link: '/src/玩机/Termux+Ubuntu+SSH+SFTP+Swift+Code-Server' },
-            { text: 'open-vm-tools工具的安装与使用', link: '/src/玩机/open-vm-tools工具的安装与使用' },
+            { text: 'Open-vm-tools工具的安装与使用', link: '/src/玩机/open-vm-tools工具的安装与使用' },
             { text: 'Anlinux-Resources Netlify 资源同步', link: '/src/玩机/Anlinux-Resources Netlify 资源同步' },
           ]
         }
@@ -221,6 +239,8 @@ export default defineConfig({
       '/src/Netfity/': [
         {
           text: 'Netfity',
+          collapsed: false,
+          link: '/src/Netfity/_introduction-Netfity',
           items: [
             { text: 'Site-Font站点说明', link: '/src/Netfity/Site-Font站点说明' },
             { text: 'Site-Music站点说明', link: '/src/Netfity/Site-Music站点说明' },
