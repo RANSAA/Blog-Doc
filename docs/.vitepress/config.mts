@@ -232,12 +232,12 @@ export default defineConfig({
           collapsed: false,
           link: '/src/Mac OSX/_introduction-Mac OSX',
           items: [
-            { text: 'Apache配置https', link: '/src/Mac OSX/1.Apache配置https' },
-            { text: 'Git 多帐号解决方案', link: '/src/Mac OSX/2.git 多帐号解决方案' },
-            { text: 'Hosts文件解决github.com访问问题', link: '/src/Mac OSX/3.Hosts文件解决github.com访问问题' },
-            { text: 'Shell执行sudo命令时,自动输入密码', link: '/src/Mac OSX/4.shell执行sudo命令时,自动输入密码' },
-            { text: 'Sourcetree添加github.com ssh', link: '/src/Mac OSX/5.Sourcetree添加github.com ssh' },
-            { text: '使用 networksetup命令手动设置IP地址', link: '/src/Mac OSX/6.使用 networksetup命令手动设置IP地址' },
+            { text: 'Shell执行sudo命令时，自动输入密码', link: '/src/Mac OSX/1.Shell执行sudo命令时，自动输入密码' },
+            { text: 'Github创建SSH：Sourcetree自动创建与手动创建', link: '/src/Mac OSX/2.Github创建SSH：Sourcetree自动创建与手动创建' },
+            { text: 'Github多帐号解决方案', link: '/src/Mac OSX/3.Github多帐号解决方案' },
+            { text: 'Github通过Hosts文件解决访问问题', link: '/src/Mac OSX/4.Github通过Hosts文件解决访问问题' },
+            { text: 'Apache配置https', link: '/src/Mac OSX/5.Apache配置https' },
+            { text: '使用networksetup命令手动设置IP地址', link: '/src/Mac OSX/6.使用 networksetup命令手动设置IP地址' },
             { text: 'SideStore + LiveContainer 实现自签名与安装任意应用', link: '/src/Mac OSX/7.SideStore + LiveContainer 实现自签名与安装任意应用' },
           ]
         }
