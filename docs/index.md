@@ -24,6 +24,9 @@ features:
   - title: Mac OSX
     details: Mac OSX开发文档记录
     link: /src/Mac OSX/_introduction-Mac OSX
+  - title: Python
+    details: Python开发文档记录
+    link: /src/Python/_introduction-Python
   - title: Linux
     details: Linux相关文档记录
     link: /src/Linux/_introduction-Linux

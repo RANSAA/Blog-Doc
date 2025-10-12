@@ -146,6 +146,10 @@ export default defineConfig({
         ]
       },
       {
+        text: 'Python',
+        items: [{ text: 'Python', link: '/src/Python/_introduction-Python' }]
+      },
+      {
         text: 'Linux',
         items: [{ text: 'Linux', link: '/src/Linux/_introduction-Linux' }]
       },
@@ -239,6 +243,16 @@ export default defineConfig({
             { text: 'Apache配置https', link: '/src/Mac OSX/5.Apache配置https' },
             { text: '使用networksetup命令手动设置IP地址', link: '/src/Mac OSX/6.使用 networksetup命令手动设置IP地址' },
             { text: 'SideStore + LiveContainer 实现自签名与安装任意应用', link: '/src/Mac OSX/7.SideStore + LiveContainer 实现自签名与安装任意应用' },
+          ]
+        }
+      ],
+      '/src/Python/': [
+        {
+          text: 'Python',
+          collapsed: false,
+          link: '/src/Python/_introduction-Python',
+          items: [
+            { text: '使用虚拟环境编译，运行Python源代码', link: '/src/Python/1.使用虚拟环境编译，运行Python源代码' },
           ]
         }
       ],
