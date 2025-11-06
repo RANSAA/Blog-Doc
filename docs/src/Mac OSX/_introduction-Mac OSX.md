@@ -13,4 +13,5 @@ const base = process.env.VITE_BASE_URL;
   <a class="grid-item" :href="`${base}/src/Mac OSX/5.Apache配置https`">Apache配置https</a>
   <a class="grid-item" :href="`${base}/src/Mac OSX/6.使用 networksetup命令手动设置IP地址`">使用networksetup命令手动设置IP地址</a>
   <a class="grid-item" :href="`${base}/src/Mac OSX/7.SideStore + LiveContainer 实现自签名与安装任意应用`">SideStore + LiveContainer 实现自签名与安装任意应用</a>
+<a class="grid-item" :href="`${base}/src/Mac OSX/8.macOS12编译Swift6的步骤与问题`">macOS12编译Swift6的步骤与问题</a>
 </div>
