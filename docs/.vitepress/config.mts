@@ -244,6 +244,7 @@ export default defineConfig({
             { text: '使用networksetup命令手动设置IP地址', link: '/src/Mac OSX/6.使用 networksetup命令手动设置IP地址' },
             { text: 'SideStore + LiveContainer 实现自签名与安装任意应用', link: '/src/Mac OSX/7.SideStore + LiveContainer 实现自签名与安装任意应用' },
             { text: 'macOS12编译Swift6的步骤与问题', link: '/src/Mac OSX/8.macOS12编译Swift6的步骤与问题' },
+            { text: 'GitHub清空仓库冗余数据，只保留一份最新代码', link: '/src/Mac OSX/9.GitHub清空仓库冗余数据，只保留一份最新代码' },
           ]
         }
       ],
