@@ -148,6 +148,8 @@ pod 'WCDB.swift'                #微信封装的sqlite库   Swift
 pod 'Realm'                     #Core Data与SQLite的替代品   OC
 pod 'RealmSwift'                #Core Data与SQLite的替代品   Swift
 pod "EJDB2"                     #一个json通用数据库框架 -> https://github.com/Softmotions/ejdb
+SQLite.swift                    #基于SQLite3的数据库，同时支持liunx。 -> https://github.com/stephencelis/SQLite.swift
+GRDB.swift                      #一个面向 SQLite 数据库的工具包，重点是应用开发  -> https://github.com/groue/GRDB.swift
     说明：
         1.WCDB和FMDB都是基于Sqlite；
         2.WCDB，Realm支持ORM，FMDB不支持ORM。
