@@ -1,3 +1,6 @@
+# Swift 中关于动态链接库设置问题
+
+
 ## Linux下Swift运行环境中的动态链接库设置
 在Linux下要想正确运行Swift或其应用，需要对Swift的环境变量进行一些环境变量设置，设置位置如```.bash_profile```
 
