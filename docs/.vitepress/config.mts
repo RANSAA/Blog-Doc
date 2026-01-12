@@ -288,6 +288,7 @@ export default defineConfig({
             { text: 'Termux+Ubuntu+SSH+SFTP+Swift+Code-Server', link: '/src/玩机/Termux+Ubuntu+SSH+SFTP+Swift+Code-Server' },
             { text: 'Open-vm-tools工具的安装与使用', link: '/src/玩机/open-vm-tools工具的安装与使用' },
             { text: 'Anlinux-Resources Netlify 资源同步', link: '/src/玩机/Anlinux-Resources Netlify 资源同步' },
+            { text: 'SideStore + LiveContainer 实现自签名与安装任意应用', link: '/src/Mac OSX/7.SideStore + LiveContainer 实现自签名与安装任意应用' },
           ]
         }
       ],
