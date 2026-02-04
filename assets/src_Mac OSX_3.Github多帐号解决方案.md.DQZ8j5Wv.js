@@ -1,0 +1,66 @@
+import{_ as a,c as n,o as p,ag as e}from"./chunks/framework.Bee44SUS.js";const u=JSON.parse('{"title":"Github多帐号解决方案","description":"","frontmatter":{},"headers":[],"relativePath":"src/Mac OSX/3.Github多帐号解决方案.md","filePath":"src/Mac OSX/3.Github多帐号解决方案.md","lastUpdated":1770199621000}'),t={name:"src/Mac OSX/3.Github多帐号解决方案.md"};function i(l,s,c,o,h,d){return p(),n("div",null,[...s[0]||(s[0]=[e(`<h1 id="github多帐号解决方案" tabindex="-1">Github多帐号解决方案 <a class="header-anchor" href="#github多帐号解决方案" aria-label="Permalink to &quot;Github多帐号解决方案&quot;">​</a></h1><h2 id="_1-没有权限" tabindex="-1">1.没有权限 <a class="header-anchor" href="#_1-没有权限" aria-label="Permalink to &quot;1.没有权限&quot;">​</a></h2><p>在使用git操作时，如果提示没有相关权限，那么就需要将该密钥将密码短语存储在您的钥匙串中。</p><p>将私钥添加到ssh-add中：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>ssh-add ~/.ssh/rsa</span></span></code></pre></div><p>测试账号是否连通：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>ssh -T git@github.com</span></span></code></pre></div><p>git ssh创建：我一般使用sourcetree创建，其它方式自行百度</p><p><code>如果</code>有多个GitHub账号，那么也需要将对应的私钥导入系统中，例如:</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>echo &#39;添加PRIVATE KEY 到 ssh-agent:&#39;</span></span>
+<span class="line"><span>ssh-add /Volumes/ExData/Users/kimi/.ssh/github-RANSAA</span></span>
+<span class="line"><span>ssh-add /Volumes/ExData/Users/kimi/.ssh/github-ctsfork</span></span></code></pre></div><p><code>并且</code>推荐使用BootTask应用将添加私钥命令添加到它的task任务中并开机自启。<br><code>因为</code>添加私钥需要再每次开机后重新导入，并且需要注意的是如果将添加私钥命令写入shell脚本中，<br><code>再</code>执行shell脚本时需要注意一个shell脚本作用域的问题（只在当前shell运行期间有效，其它地方无效），<br><code>所以</code>直接推荐使用BootTask应用添加需要开机自启的任务。</p><p>其它：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>echo &quot;确认ssh-agent处于开启状态，打印pid... 表示启用中&quot;</span></span>
+<span class="line"><span>eval &quot;$(ssh-agent -s)&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>echo &#39;添加PRIVATE KEY 到 ssh-agent:&#39;</span></span>
+<span class="line"><span># ssh-add ~/.ssh/github-RANSAA</span></span>
+<span class="line"><span># 或者</span></span>
+<span class="line"><span># ssh-add -K ~/.ssh/github-RANSAA</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## ssh测试连接到github.com</span></span>
+<span class="line"><span>## ssh -T -p 443 git@ssh.github.com</span></span>
+<span class="line"><span>## </span></span>
+<span class="line"><span># echo &quot;测试指定账号ssh连通性:&quot;</span></span>
+<span class="line"><span># ssh -T git@github.com</span></span>
+<span class="line"><span># ssh -T git@RANSAA-GitHub</span></span>
+<span class="line"><span># ssh -T git@ctsfork-GitHub</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># github ssh 公私钥生成命令</span></span>
+<span class="line"><span># ssh-keygen -t ed25519 -C &quot;123456@qq.com&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 注意: 多github账号时必须将config文件拷贝到~/.ssh/文件夹中，</span></span>
+<span class="line"><span># 因为config文件中配置了多个git账号的访问别名。</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## 注意如果有多个MacOS系统并且使用同一套ssh公私钥，那么需要保证不同的系统需要访问相同的~/.ssh/config文件。</span></span></code></pre></div><h2 id="_2-多个github-com账号共存的问题" tabindex="-1">2.多个github.com账号共存的问题 <a class="header-anchor" href="#_2-多个github-com账号共存的问题" aria-label="Permalink to &quot;2.多个github.com账号共存的问题&quot;">​</a></h2><ol><li>当电脑中同时存在多个github账号时会出现git仓库所有权问题，git仓库总会使用默认用户操作，即使该仓库不是默认账户所有。</li><li>要解决这个问题就需要切换账号，让git找到正确的账户</li><li>config文件：</li></ol><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span># --- Sourcetree Generated ---</span></span>
+<span class="line"><span>Host github-RANSAA</span></span>
+<span class="line"><span>	HostName github.com</span></span>
+<span class="line"><span>	User RANSAA</span></span>
+<span class="line"><span>	PreferredAuthentications publickey</span></span>
+<span class="line"><span>	IdentityFile /Volumes/ExData/Users/kimi/.ssh/github-RANSAA</span></span>
+<span class="line"><span>	UseKeychain yes</span></span>
+<span class="line"><span>	AddKeysToAgent yes</span></span>
+<span class="line"><span># ----------------------------</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># --- Sourcetree Generated ---</span></span>
+<span class="line"><span>Host github-ctsfork</span></span>
+<span class="line"><span>	HostName github.com</span></span>
+<span class="line"><span>	User ctsfork</span></span>
+<span class="line"><span>	PreferredAuthentications publickey</span></span>
+<span class="line"><span>	IdentityFile /Volumes/ExData/Users/kimi/.ssh/github-ctsfork</span></span>
+<span class="line"><span>	UseKeychain yes</span></span>
+<span class="line"><span>	AddKeysToAgent yes</span></span>
+<span class="line"><span># ----------------------------</span></span></code></pre></div><p>如果同时要使用Sourcetree,用默认的git@github.com的方式使用git，也可以向config文件中加入：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span># --- Sourcetree Generated ---</span></span>
+<span class="line"><span>Host github.com</span></span>
+<span class="line"><span>	HostName github.com</span></span>
+<span class="line"><span>	User RANSAA</span></span>
+<span class="line"><span>	PreferredAuthentications publickey</span></span>
+<span class="line"><span>	IdentityFile /Volumes/ExData/Users/kimi/.ssh/RANSAA-GitHub</span></span>
+<span class="line"><span>	UseKeychain yes</span></span>
+<span class="line"><span>	AddKeysToAgent yes</span></span>
+<span class="line"><span># ----------------------------</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># --- Sourcetree Generated ---</span></span>
+<span class="line"><span>Host github.com</span></span>
+<span class="line"><span>	HostName github.com</span></span>
+<span class="line"><span>	User ctsfork</span></span>
+<span class="line"><span>	PreferredAuthentications publickey</span></span>
+<span class="line"><span>	IdentityFile /Volumes/ExData/Users/kimi/.ssh/ctsfork-GitHub</span></span>
+<span class="line"><span>	UseKeychain yes</span></span>
+<span class="line"><span>	AddKeysToAgent yes</span></span>
+<span class="line"><span># ----------------------------</span></span></code></pre></div><p>上面是两个github账号ssh配置信息，git依次读取config的信息，<code>并且默认账号是最先添加的那个</code>。<br> 4. 使用sourcetree需要注意，sc创建的config中User都是对应具体账号的用户名(如RANSAA，ctsfork)，这儿需要User名称更改为：<strong>git</strong> <br> 5. git当前的默认账号是RANSAA <br> 6. git路径访问问题，以Masonry为例： 第一个账号（默认账号）：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>git@github.com:SnapKit/Masonry.git      //git 默认访问路径</span></span></code></pre></div><p>或者：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>git@github-RANSAA:SnapKit/Masonry.git</span></span></code></pre></div><p>第二个账号就需要使用：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>git@github-ctsfork:SnapKit/Masonry.git</span></span></code></pre></div><p><br> 7. 需要注意config中的Host名称，如果同时存在多个github账号，git路径就与Host名称息息相关。</p>`,25)])])}const r=a(t,[["render",i]]);export{u as __pageData,r as default};
