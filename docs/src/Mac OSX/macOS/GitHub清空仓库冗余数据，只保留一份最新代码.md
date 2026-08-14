@@ -1,0 +1,81 @@
+## GitHub清空仓库冗余数据，只保留一份最新代码
+
+
+## 简介
+有时候仓库提交次数太多，造成仓库的体积剧增，但是这些提交又不重要，只需要最新的提交。\
+那么这时候就需要重置清空仓库，然后只保留一份最新代码即可。
+
+
+## 清空GitHub仓库并保留最新代码的步骤如下：
+## 操作前提醒
+- **备份重要文件和记录**：清空操作将不可恢复。
+- **确认权限**：需要具有该仓库的管理员权限。
+
+
+## 具体步骤
+1. 克隆仓库到本地
+```
+git clone <仓库地址>
+cd <仓库名>
+```
+2. 删除所有历史提交记录
+```
+rm -rf .git
+```
+3. 重新初始化 Git 仓库
+```
+git init
+``` 
+4. 添加最新代码,将当前目录下的所有文件添加到新仓库：
+```
+git add .
+```
+5. 提交新的初始记录，创建一个新的提交：
+```
+git commit -m "Initial commit with the latest code"
+```
+6. 强制推送到远程仓库,将本地仓库的最新代码强制覆盖远程仓库内容：
+```
+git remote add origin <远程仓库地址>
+git branch -M main  # 确保分支名与远程一致（如默认是 main 或 master）
+git push -f origin main
+```
+\
+**结果**
+- 远程仓库将只保留最新代码，所有提交记录将被清空。
+- 仓库历史记录无法恢复。
+
+
+
+## 示例：清空一个已经存在的本地仓库
+已经存在的仓库AutoTask，它的主分支名为master，github仓库地址如下：
+```
+git@github-ctsfork:ctsfork/AutoTask.git
+```
+现在清除所有提交记录，只保留一份最新的代码的具体操作如下：
+```
+## 拉取最新代码
+git pull
+
+
+## 删除.git前，先备份.git/config文件
+
+
+## 删除.git目录
+rm -rf .git
+git init
+git add .
+git commit -m "Initial commit with the latest code"
+
+git remote add origin git@github-ctsfork:ctsfork/AutoTask.git
+git branch -M master
+
+
+## push前，需要保证与之前备份的.git/config中的[branch "main"]区域，以提供默认分支，不需要
+## 使git push时使用默认的分支，而不需要每次都指定分支
+git push
+## 或者指定推送分支
+git push -f origin master
+
+```
+

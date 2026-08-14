@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "build": "vitepress build docs",
+    "build:netlify": "CONFIG_ENV=netlify vitepress build docs",
+    "build:github": "CONFIG_ENV=github vitepress build docs",
+    "dev:netlify": "CONFIG_ENV=netlify vitepress dev docs --host 0.0.0.0",
+    "dev:github": "CONFIG_ENV=github vitepress dev docs --host 0.0.0.0",
+    "preview:netlify": "CONFIG_ENV=netlify vitepress preview docs --host 0.0.0.0",
+    "preview:github": "CONFIG_ENV=github vitepress preview docs --host 0.0.0.0"
+  }
+}

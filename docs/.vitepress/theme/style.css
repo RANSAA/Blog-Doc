@@ -1,0 +1,68 @@
+@charset "UTF-8";
+/* CSS Document */
+/*自定义样式*/
+
+
+.grid-container {
+  display: grid;
+
+  /*可用于窗口自适应*/
+  place-content: center;
+  grid-template-columns: repeat(auto-fit, 20rem);  /*每列自动填充 宽度为20rem */
+/*  grid-template-columns: repeat(auto-fit, minmax(20rem, 0.5fr));*/
+
+  grid-row-gap: 24px;
+  grid-column-gap: 64px;
+
+  padding-top: 24px;
+  padding-bottom: 10px;
+
+
+/*  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 2rem;*/
+}
+
+
+.grid-item {
+  color: #888888; 
+  position: relative;
+  padding: 1.25rem;
+  font-size: 1.0rem;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0; 
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px  2px rgba(0, 0, 0, .25);
+  transition: background-color 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+/*确保文字居中显示*/
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+/*确保文字长度不会超出item区域*/
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+
+/* 强制移除所有链接的下划线和颜色 */
+.grid-item:link,
+.grid-item:visited,
+.grid-item:hover,
+.grid-item:active {
+  text-decoration: none !important;  /* 去除下划线 */
+  color: inherit !important; /* 使用父元素的颜色，避免蓝色 */
+}
+
+
+
+
+
+
+

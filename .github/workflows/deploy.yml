@@ -1,0 +1,81 @@
+name: Deploy VitePress Site
+
+on:
+  push:
+    branches:
+      - main  # 当推送到 main 分支时触发
+
+  #手动执行任务
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出代码仓库
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # # 设置 Node.js 版本
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 24
+
+
+
+      # 安装依赖并构建项目到Netlify
+      - name: Install and Build To Netlify
+        run: |
+          npm ci  # 使用 npm ci 确保版本一致
+          npm run build:netlify
+
+
+      # ## 部署到netlify 使用netlify用户的yaml -  ⚠️⚠️已经无法正常部署了
+      # - name: Deploy to Netlify Use netlify
+      #   uses: netlify/actions/cli@master
+      #   with:
+      #     args: deploy --dir=./docs/.vitepress/dist --prod
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+
+
+      ## 部署到netlify 使用nwtgck用户的yaml
+      - name: Deploy to Netlify Use nwtgck
+        uses: nwtgck/actions-netlify@v4.0
+        with:
+          publish-dir: './docs/.vitepress/dist'
+          production-deploy: true
+          enable-pull-request-comment: false
+          enable-commit-comment: false
+          enable-commit-status: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+
+
+      # 安装依赖并构建项目到Github
+      - name: Install and Build To Github
+        run: |
+          npm ci  # 使用 npm ci 确保版本一致
+          npm run build:github
+
+      # 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/.vitepress/dist  # VitePress 构建输出目录
+          force_orphan: true  # 使用空分支防止冲突
+
+
+
+
+
+
+
+
+

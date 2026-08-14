@@ -1,0 +1,129 @@
+# SideStore + LiveContainer 实现自签名与安装任意应用
+
+## ✅✅最新文件解决办法✅✅
+如果后期出现了一些莫名其妙的问题：尤其是签名，登录相关的问题时的解决方案：
+1. 确保网络能够访问Apple服务器：可以先直接使用手机上的VPN软件(确保Apple服务能通过代理)，如果不行再使用电脑上的VPN软件开启全局，再在手上设置http代理，代理端口为VPN软件的代理端口。然后再在SideStore + LiveContainer实行刷新，签名等操作。如果不能解决问题那就继续第2步。
+2. 直接在SideStore + LiveContainer中的SideStore模块中选中App长按弹出resign重签，重置证书等操作都可以依次尝试看能否解决签名，刷新等问题。如果不能解决问题就继续第3步。
+3. 使用iloader重新安装(Apple账号不要变)最新版的SideStore，然后执行第二步的操作，这样基本本上能解决问题了。
+
+## ⚠️ 更新 ⚠️：解决部分运营商对 gsa.apple.com 不友好的问题。
+使用下面的新方法后，Apple开发服务器又被墙，导致签名刷新会出现数据错误，解决方式是使用代理。
+- 方案一：依旧是下面的代理方案，需要使用两个设备，一个设备提供外网代理功能并设置全局代理，iPhone使用WiFi的代理功能链接到提供外网的设备，然后再在本地开启LocalDevVPN即可实现签名刷新功能。
+- 方案二：使用[Sidestore-ClashMi](https://github.com/tom-snow/Sidestore-ClashMi)与 [ClashMi](https://apps.apple.com/us/app/clash-mi/id6744321968) 即可替代 LocalDevVPN / StosVPN 。在ClashMi中配置好Sidestore-ClashMi后就可以同时访问外网和实现 LocalDevVPN / StosVPN的相同功能来刷新签名。`阿里云盘中-我的软件/Mac OS X/软件/_iPhone`中已经配置好了两个可以使用的文件`Sidestore-ClashMi-Mini.yaml`和`Sidestore-ClashMi.yaml`。如需修改可以查看具体的Sidestore-ClashMi配置文件。
+
+## ⚠️ 警告 ⚠️：最新方法的使用方法
+
+现在只需要使用[LocalDevVPN](https://apps.apple.com/app/localdevvpn/id6755608044)和[iloader](https://github.com/nab138/iloader)即可实现自签操作，其中：
+
+- LocalDevVPN： 提供本地 VPN 隧道服务，和 StosVPN 的效果一样。
+- iloader：安装SideStore+LiveContainer（签名过期重新安装即可）。 过去SideStore 安装的所有操作都由 iloader 全部完成，不再需要以前的 iDevicePair，SideServer，AltStore 等工具了。
+
+**注意事项**： \
+由于 Apple 的开发服务器被墙，导致 SideStore 安装和 LiveContainer 刷新应用时出现数据错误的问题，这不是 LiveContainer 的问题只需要解决网络访问问题即可，具体操作：
+- 在macOS 上开启VPN(Clash Meta)，并```将代理模式设置为全局```；注意：如果下面的```安装```与```刷新```操作失败，也可能是VPN线路的问题，```如果失败可以尝试不同的节点```。
+- 在 macOS 上使用 VPN(如 Clash Meta)代理时需要使用`全局模式`，这样 iloader 才能正确的工作。
+- 在 iPhone 刷新应用时，现将 macOS 上的形如 Clash Meta 的 VPN 代理工具的`允许局域网访问`打开，然后在 iPhone 上使用自定义代理，代理地址为 macOS 的 IP 地址，端口为 Clash Meta 的代理端口如 7890(由 VPN 软件确定)，例如：192.168.1.7:7890
+
+**关于 iPhone 使用 Clash 的局域网代理功能**： \
+只要在 iPhone 上正确的设置了代理，在 iPhone 上不使用 VPN 软件也可以直接访问外网。 \
+`iPhone 自定义代理的 IP+Port` 就是 `macOS 的 IP`+`Clash 的代理端口`。 \
+并且Clash 需要开启`允许局域网访问`功能，代理模式需要设置为`全局模式`。\
+Clash Meta 常用代理端口: 
+| 类型 | 端口 | 说明 |
+|---|---|---|
+|  Mixed Port   |  7890   |  由VPN软件决定  |
+|  Socks Port   |  7891   |  由VPN软件决定（可选）  |
+|  HTTP Port    |   7892  |  由VPN软件决定（可选）  |
+|     |     |    |
+|     |     |    |
+|     |     |  建议使用 Mixed Port，最简单!   |
+|     |     |    |
+|     |     |    |
+
+
+
+##
+## 简介
+
+没有证书又想在 iPhone/iPad 上实现自签名与不受限制的安装任意数量 App 的方法，那么就是`SideStore`与`LiveContainer`组合实现了。其中： \
+\
+`SideStore`：用于在 iPhone 上利用普通的 Apple 账号实现自签名，普通 Apple 账号只能安装`3个应用`，并且`7天内只能创建10个BundleID`，超出 10 个后将无法签名新的 App，只能等到 7 天后重置 Apple BundleID，如果你有 Apple 开发者账号，那么直接使用 SideStore 签名即可，或者通过其它的签名工具通过证书签名 App 即可。\
+\
+`LiveContainer`：用来安装任意数量软件的容器类 App。\
+\
+`现在`需要的就是通过其它软件将 SideStore 安装到 iPhone 上，然后再利用 SideStore 对 LiveContainer 进行签名安装到 iPhone 上，将 SideStore 安装到 iPhone 就需要测载工具`SideServer`或`AltStore`了，并且使用 SideStore 自签名安装 LiveContainer 时就需要用到专用的本地隧道软件`StosVPN`了，并且需要注意的是在使用 SideStore 签名安装本地应用时需要先对设备进行配对操作，其中需要用到`iDevicePair`软件来进行配对操作，iDevicePair 配对时可以直接将配对文件安装到 SideStore 中，如果 iPhone 中安装了 LiveContainer(包含 SideStore 的版本)也能将配对文件安装到 LiveContainer 中，也可以将配对文件导出然后在 SideStore 中手动安装，需要注意的是 iDevicePair 生成新的配对文件后，之前的配对文件将会失效，使用之前的配对文件签名的应用重新刷新时会失败，需要在 SideStore 中重置配对文件然后重新安装新的配对文件才能重新刷新签名应用，所有在生成配对文件后最好是保存下来方便后续不小心重置后可以手动安装使用。
+
+## 软件下载
+
+1. **SideServer**：[SideServer-macOS](https://github.com/SideStore/SideServer-macOS/releases)，[SideServer-Windows](https://github.com/SideStore/SideServer-Windows/releases)，[SideServer-for-Linux](https://github.com/SideStore/SideServer-for-Linux)
+2. **AltStore**：[AltStore](https://altstore.io/)
+3. **SideStore**：[SideStore](https://github.com/SideStore/SideStore/releases)
+4. **iDevicePair**：[iDevicePair](https://github.com/jkcoxson/idevice_pair/releases)
+5. **StosVPN**：[StosVPN](https://apps.apple.com/us/app/stosvpn/id6744003051)
+6. **LocalDevVPN**：[LocalDevVPN](https://apps.apple.com/app/localdevvpn/id6755608044)
+7. **LiveContainer**：[LiveContainer](https://github.com/LiveContainer/LiveContainer/releases)
+8. **[SideStore Team](https://github.com/SideStore)**：SideStore Team Github 站点。
+
+## 软件说明
+
+1. 测载软件`SideServer`和`AltStore`：AltStore 签名测载软件的能力要强于 SideServer，使用 SideServer 测载软件时总会遇到各种各样的问题，而 AltStore 签名测载安装应用时基本上不会出问题；但是 SideServer 能把登录的账号保存下来，软件只需要登录一次账号即可，而 AltStore 将应用测载安装到 iPhone 时每次都需要输入 Apple 账号。如果你只需要安装 3 个以内的自签名应用使用 AltStore 测载即可，但是你没有专用的签名证书，不能安装`巨魔`软件，又需要安装任意数量 App 时`推荐使用SideServer`测载安装应用。
+2. 如果需要使用`SideStore`和`LiveContainer`自签名安装应用时，`强烈推荐SideServer来测载安装SideStore`，应为使用 SideServer 来安装 SideStore 可以在后面使用期间减少签名刷新时出现的问题。
+3. LiveContainer 又有两个版本，一个内置了 SideStore 的版本，另一个没有内置 SideStore；推荐使用内置了 SideStore 的 LiveContainer，这样就可在在安装 LiveContainer 后删除单的 SideStore 应用，用来节省一个可以直接签名安装的应用名额，虽然内置 SideStore 的 LiveContainer 在签名刷新有一些问题，但又不是不能用。
+4. 如果确认了使用`SideStore+LiveContainer`的方式安装软件，那么电脑上删掉其它的测载软件`只保留SideServer和iDevicePair这两个软件`，其它的测载安装 IPA 的软件统统不要，都不要，都不要，重要的事情说三遍；`并且签名过期需要重新安装SideStore时，一定不要再用其它的测载工具安装IPA软件`，因为这样容易出现问题。手机上面也只需要安装`StosVPN，LiveContainer和SideStore即可，也可根据LiveContainer版本选择是否删除SideStore`。
+5. `⚠️⚠️⚠️最后强调说明，最先使用了什么测载工具来安装IPA，那么后面重新安装，更新软件时使用的测载工具一定不要变，否在会出现设备配对文件不匹配的问题。`
+
+## SideStore + LiveContainer 自签名教程
+
+1. 在 Mac 上下载 SideServer
+2. 在 Mac 上下载 iDevicePair
+3. 在 Mac 上下载 SideStore
+4. 将 iPhone 与 Mac 电脑连接
+5. 按住 Option 键(如果按键不对可以试试那几个按键，Windows 上方法类似按住 Alt 键)然后鼠标选中状态栏图标会出现安装 ipa 的选项，然后选择已经下载好的 SideStore.ipa 安装即可，如果你的电脑能连接外网直接选择 Install SideStore 将会自动安装最新的"SideStore"到手机上。
+6. 现在 SideStore 已经安装到手机上了
+7. 现在需要安装设备配对文件了，打开 iDevicePair 选择需要配对的 iPhone，点击`Generate`按钮生成配对文件。点击`Load`按钮展开配对文件，选择`Install`按钮将配对文件安装到 SideStore 中（或者 LiveContainer 中）。然后再点击`Save to File`导出配对文件进行用于备份，用于后期使用。
+8. 目前设备已经安装好了 SideStore 并且进行了配出处理，可以进行自签名处理了。
+9. 在 iPhone 上安装 StosVPN，并开启 VPN 开关，自此就可以愉快的进行签名安装应用了。
+10. 安装：打开 SideStore，选择 IPA，找到 LiveContainer 进行安装(也可以安装其它的 IPA)，安装期间需要保持 StosVPN 处于开启状态。
+11. 刷新：同样需要先开启 StosVPN，然后点击刷新按钮即可。
+12. 至此整个 SideStore + LiveContainer 自签名安装流程完毕。
+
+## ✅✅✅ 签名过期或者 LiveContainer 版本安装错误的解决方法 ✅✅✅
+
+SideStore+LiveContainer(含 SideStore 的版本)在使用过程中可能会出现忘了刷新签名，或者在更新是错误的安装了不含 SideStore 的 LiveContainer 版本时；LiveContainer 无法刷新签名的解决方法：
+
+1. 在 SideServer 中登录与 LiveContainer 中签名相同的 Apple 账号。
+2. 使用 SideServer 安装 SideStore.ipa。
+3. 在 SideStore.ipa 中登录相同的 Apple 账号。
+4. 在 SideStore.ipa 中刷新 LiveContainer 的签名信息，刷新签名时可能会提示 Apple 账号的证书，直接同意即可。
+5. 在 SideStore.ipa 中重新刷新 LiveContainer 的签名信息，如果失败再重试即可。
+6. LiveContainer 的签名信息刷新成功后，进入 LiveContainer 内部的 SideStore 中重新刷新签名信息即可。
+7. ✅✅ 至此 LiveContainer 签名信息刷新完成。✅✅
+
+\
+⚠️⚠️ 注意 ⚠️⚠️
+\
+其中安装 SideStore.ipa 时可能会出现 AppleID 对应的应用数量已`达到10个(或者剩余的ID无法支持SideStore.ipa安装)`无法安装新应用的情况。 \
+可以使用新的 AppleID 安装 SideStore.ipa，然后再在 SideStore.ipa 中`重新登录与LiveContainer匹配的AppleID`，尝试刷新 LiveContainer 签名 \
+如果成功那么后续的操作和上面的步骤一样。如果如法使用原先的 AppleID 登录刷新那么就需要等待`7(最多)`天之后使用上面的解决方法即可。
+
+## ⚠️⚠️⚠️LiveContainer 使用中的注意事项 ⚠️⚠️⚠️
+
+1. 如果签名过期打不开 SideStore 和 LiveContainer 时，使用 SideServer 重新安装一次 SideStore 即可（签名的 Apple 账号要和之前的保持一致）。
+2. 注意 iPhone 中只能存在一个 LiveContainer 应用，不管是其它的任何方法安装的都不行(比如使用证书自签，SideStore 切换账号安重新装新的 SideStore。ipa)都是不行的，因为这样会覆盖旧的 LiveContainer 中的缓存的数据，除非你不在意这些数据打算使用一个全新的 LiveContainer 那就无所谓。
+3. 如果 LiveContainer 签名过期一定不要将其删除，因为这会清除 LiveContainer 中的数据，只需要一个正常的 SideStore 使用相同的账号重新签名即可。
+4. 注意重新签名 LiveContainer 时一定要使用之前的 Apple 账号进行签名，因为新账号签名应用生成的 bundleID 和之前的不一样就会在设备上安装上新的 LiveContainer，这样就会将旧的 LiveContainer 的数据覆盖。
+5. 关于 LiveContainer 数据被覆盖问题，因为在`文件`这个 App 中可以看到 LiveContainer 数据文件夹，新的 LiveContainer 安装时就会将`文件`中看到的 LiveContainer 目录覆盖掉，导致新的和旧的 LiveContainer 应用访问的文件目录都是最新生成的。
+6. ⚠️⚠️ 如果出现账号 10 个 BundleID 使用完 7 天限制没到，而且签名过期打不开应用时 ⚠️⚠️：
+   1. 使用之前的 Apple 账号重新安装 SideStore，如果 SideStore 重新安装成功了，只需要使用 SideStore 重新签名 LiveContainer 即可。
+   2. 如果使用之前的 Apple 账号重新安装 SideStore 时安装失败，这说明 SideStore 的 bundleID 不在之前的 10 个 BundleID 中，这时就需要在 SideServer 中切换 Apple 账号再次重装 SideStore 了（安装之前需要保证 iPhone 中的自签应用小于 3 个）。安装之后再在 SideStore 中登录之前的 Apple 账号,看看 SideStore 能不能刷新签名信息，如果能，就先刷新 SideStore，然后再在 SideStore 中刷新 LiveContainer 签名即可。如果在 SideStore 中登录之前的 Apple 账号时，不能刷新证书与签名信息，那就登录新的 Apple 账号维持 SideStore 的正常使用，等到 7 天之后重新登录之前旧的 Apple 账号重新刷新签名信息，⚠️ 注意一定不能在新账号中重新刷新 LiveContainer 的签名信息，因为这会安装新的 LiveContainer 应用导致之前旧的 LiveContainer 缓存的数据被覆盖 ⚠️。
+7. ⚠️⚠️ 如果都不是以上的问题并且签名过期，不能安装 SideStore 时，就可以重置一下设备配对文件，如果在不行就使用 iDevicePair 生成新的配对文件。
+8. ⚠️⚠️⚠️⚠️ 一定要注意的是不要删除签名过去的 LiveContainer，也不要使用新的 Apple 账号去重新签名 LiveContainer，因为这会导致之前旧的 LiveContainer 缓存的数据丢失。
+
+## ⚠️⚠️⚠️ 一定要注意 ⚠️⚠️⚠️
+
+`⚠️⚠️⚠️一定要注意的是不要删除签名过去的LiveContainer，也不要使用新的Apple账号去重新签名LiveContainer，因为这会导致之前旧的LiveContainer缓存的数据丢失。⚠️⚠️⚠️ `
+
+## 参考
+
+如果看了上面的还不会那么就参考官方的教程，操作时只需要将 AltStore 换成 SideStore 即可。
+[SideStore - iOS 签名 教程](https://sidestore.io/)
