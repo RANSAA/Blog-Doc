@@ -11,8 +11,8 @@ hero:
     alt: VitePress
   actions:
     - theme: brand
-      text: iOS文档
-      link: /src/iOS/_introduction-iOS
+      text: Github主页
+      link: https://github.com/RANSAA
     - theme: alt
       text: VitePress官网
       link: https://vitepress.dev/zh/
@@ -24,17 +24,20 @@ features:
   - title: Mac OSX
     details: Mac OSX开发文档记录
     link: /src/Mac OSX/_introduction-Mac OSX
-  - title: Python
-    details: Python开发文档记录
-    link: /src/Python/_introduction-Python
   - title: Linux
     details: Linux相关文档记录
     link: /src/Linux/_introduction-Linux
+  - title: Python
+    details: Python开发文档记录
+    link: /src/Python/_introduction-Python
+  - title: Server
+    details: Server服务相关文档
+    link: /src/Server/_introduction-Server-Home
+  - title: Web
+    details: Web相关文档记录
+    link: /src/Web/_introduction-Web-Home
   - title: 玩机
     details: 个人玩机文档记录
     link: /src/玩机/_introduction-玩机
-  - title: Netfity
-    details: Netfity站点相关文档记录
-    link: /src/Netfity/_introduction-Netfity
 ---
 

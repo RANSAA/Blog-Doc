@@ -1,4 +1,4 @@
-# Netfity
+# Python
 <script setup>
 // const base = '/Blog-Doc';
 const base = process.env.VITE_BASE_URL;

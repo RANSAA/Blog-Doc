@@ -154,12 +154,29 @@ export default defineConfig({
         items: [{ text: 'Linux', link: '/src/Linux/_introduction-Linux' }]
       },
       {
-        text: '玩机',
-        items: [{ text: '玩机', link: '/src/玩机/_introduction-玩机' }]
+        text: 'Server',
+        items: [
+          { 
+            text: 'Vapor', link: '/src/Server/_introduction-Vapor' 
+          }
+        ]
       },
       {
-        text: 'Netfity',
-        items: [{ text: 'Netfity', link: '/src/Netfity/_introduction-Netfity' }]
+        text: 'Web',
+        items: [
+          { 
+            text: 'Domains', link: '/src/Web/_introduction-Domains' 
+          },
+          {
+            items: [
+              { text: 'Netfity', link: '/src/Web/_introduction-Netfity' },
+            ]
+          }
+        ]
+      },
+      {
+        text: '玩机',
+        items: [{ text: '玩机', link: '/src/玩机/_introduction-玩机' }]
       }
     ],
 
@@ -278,6 +295,39 @@ export default defineConfig({
           ]
         }
       ],
+      '/src/Server/': [
+        {
+          text: 'Vapor',
+          collapsed: false,
+          link: '/src/Server/_introduction-Vapor',
+          items: [
+            { text: 'TKAppManager-WebServer', link: '/src/Server/Vapor/TKAppManager-WebServer' },
+          ]
+        }
+      ],
+      '/src/Web/': [
+        {
+          text: 'Domains',
+          collapsed: false,
+          link: '/src/Web/_introduction-Domains',
+          items: [
+            { text: 'DNSHE域名管理', link: '/src/Web/Domains/DNSHE域名管理' },
+          ]
+        },
+        {
+          text: 'Netfity',
+          collapsed: false,
+          link: '/src/Web/_introduction-Netfity',
+          items: [
+            { text: 'Site-Font站点说明', link: '/src/Web/Netfity/Site-Font站点说明' },
+            { text: 'Site-Music站点说明', link: '/src/Web/Netfity/Site-Music站点说明' },
+            { text: 'Site-MV站点说明', link: '/src/Web/Netfity/Site-MV站点说明' },
+            { text: 'Site-Picture站点说明', link: '/src/Web/Netfity/Site-Picture站点说明' },
+            { text: 'Site-NovalSetApp站点说明', link: '/src/Web/Netfity/Site-NovalSetApp站点说明' },
+            { text: 'Site-AV站点说明', link: '/src/Web/Netfity/Site-AV站点说明' }
+          ]
+        }
+      ],
       '/src/玩机/': [
         {
           text: '玩机',
@@ -292,24 +342,11 @@ export default defineConfig({
           ]
         }
       ],
-      '/src/Netfity/': [
-        {
-          text: 'Netfity',
-          collapsed: false,
-          link: '/src/Netfity/_introduction-Netfity',
-          items: [
-            { text: 'Site-Font站点说明', link: '/src/Netfity/Netfity/Site-Font站点说明' },
-            { text: 'Site-Music站点说明', link: '/src/Netfity/Netfity/Site-Music站点说明' },
-            { text: 'Site-MV站点说明', link: '/src/Netfity/Netfity/Site-MV站点说明' },
-            { text: 'Site-Picture站点说明', link: '/src/Netfity/Netfity/Site-Picture站点说明' },
-            { text: 'Site-NovalSetApp站点说明', link: '/src/Netfity/Netfity/Site-NovalSetApp站点说明' },
-            { text: 'Site-AV站点说明', link: '/src/Netfity/Netfity/Site-AV站点说明' }
-          ]
-        }
-      ],
     }
 //侧边栏-END    
 
   }
+
+
 
 })
