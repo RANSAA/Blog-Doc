@@ -274,6 +274,7 @@ export default defineConfig({
             { text: 'Swift安装教程', link: '/src/Linux/Linux/Swift安装教程' },
             { text: 'Shell 计算代码执行时长', link: '/src/Linux/Linux/Shell 计算代码执行时长' },
             { text: '利用shell脚本实现监控程序自动重启', link: '/src/Linux/Linux/利用shell脚本实现监控程序自动重启' },
+            { text: 'VMware Fusion 中Ubuntu虚拟机磁盘空间释放', link: '/src/Linux/Linux/VMware Fusion 中Ubuntu虚拟机磁盘空间释放' },
           ]
         }
       ],

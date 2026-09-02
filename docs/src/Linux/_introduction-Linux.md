@@ -14,6 +14,7 @@ const base = process.env.VITE_BASE_URL;
   <a class="grid-item" :href="`${base}/src/Linux/Linux/Swift安装教程`">Swift安装教程</a>
   <a class="grid-item" :href="`${base}/src/Linux/Linux/Shell 计算代码执行时长`">Shell 计算代码执行时长</a>
   <a class="grid-item" :href="`${base}/src/Linux/Linux/利用shell脚本实现监控程序自动重启`">利用shell脚本实现监控程序自动重启</a>
+ <a class="grid-item" :href="`${base}/src/Linux/Linux/VMware Fusion 中Ubuntu虚拟机磁盘空间释放`">VMware Fusion 中Ubuntu虚拟机磁盘空间释放</a>
 </div>
 
 
