@@ -271,6 +271,7 @@ cts-v3文件部署相关：
  API：/v1/deploy/upload/cts-v3
  Body参数：
  file：用于接收文件的字段名称，它的数据类型可以是String 和 File
+ 注意：如果请求'Content-Type: application/octet-stream'，那么就可以不要file参数名了，直接接收整个body数据为cts-v3文件。
  认证参数：
  headers["username"]
  headers["password"]
