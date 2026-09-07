@@ -332,16 +332,33 @@ cts-v3文件部署相关：
 
 
 
+```
+/**
+  功能：清空数据
+  方式：DELETE
+  API：/v1/backup/reset
+  认证参数：
+  headers["username"]
+  headers["password"]
+**/
+```
+
+
+
+
+
+
 
 
 
 ## 关于cts-v3文件
 cts-v3文件部署平台：
-1. 当前应用部署平台
-2. Gitee
-3. Github
-4. Github 镜像站点： `https://gh-proxy.com`，`https://gh-proxy.net`，`https://ghproxy.net`
-5. Netlify
+* **CTSServer**：/v1/deploy/cts-v3
+* **Github**：https://github.com/RANSAA/kidlucky
+* **GitCode**：https://gitcode.com/sayaDev/kidlucky
+* **Gitee**：https://gitee.com/kidlucky/kidlucky
+* **Netlify**：https://kidlucky.netlify.app
+* **Github.io**：https://ransaa.github.io/kidlucky
 
 
 
