@@ -346,6 +346,32 @@ cts-v3文件部署相关：
 
 
 
+数据临时存储(存储在内存中的)：
+```
+/**
+ 功能：上传临时数据到内存
+ 方式：POST
+ API：/storage/memory/mapping
+ 路由参数：key
+ 示例：/storage/memory/mapping/[name]
+ **/
+```
+
+```
+/**
+ 功能：从临时数据中获取指定数据
+ 方式：GET
+ API：/storage/memory/mapping
+ 路由参数：key
+ 示例：/storage/memory/mapping/[name]
+ **/
+```
+
+
+
+
+
+
 
 
 
